@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamePanel : MonoBehaviour
 {
@@ -49,7 +50,7 @@ public class GamePanel : MonoBehaviour
         // this is the current setting
         row = Const.RowNum;
         col = Const.ColumnNum;
-        this.grids = new MyGrid[gridNum][];
+        this.grids = new MyGrid[row][];
 
         for (int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
@@ -63,7 +64,7 @@ public class GamePanel : MonoBehaviour
     }
     public MyGrid CreateGrid(){
         //create instances from profabs
-        GameObject gameObject = GameObject.Instantiate(gridPrefab,girdParent);
+        GameObject gameObject = GameObject.Instantiate(tilePrefab,girdParent);
         return gameObject.GetComponent<MyGrid>();
     }
 
