@@ -30,7 +30,6 @@ public class PianoTile : MonoBehaviour
     public void MoveToGrid(MyGrid myGrid){
         transform.SetParent(myGrid.transform);
         transform.localPosition = Vector3.zero;
-        Debug.Log("hahaha");
 
         GetGrid().SetPianoTile(null);
         myGrid.SetPianoTile(this);

@@ -88,7 +88,6 @@ public class GamePanel : MonoBehaviour
     }
 
     public void MoveDown(){
-        Debug.Log("move down");
         for(int i = row-1; i >=0; i --){
             for(int j = col-1; j >= 0; j--){
                 if (grids[i][j].IsHavePianoTile()){
@@ -102,7 +101,6 @@ public class GamePanel : MonoBehaviour
                     }
                     else{
                         pianoTile.MoveToGrid(grids[i+1][j]);
-                        Debug.Log("movedown pianoTile");
                     }
                 }
             }
