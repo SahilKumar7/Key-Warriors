@@ -246,8 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af4137fe8176234d993cf808c98b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveSpriteImage: {fileID: 0}
-  activeSpriteImage: {fileID: 0}
+  inactiveSpriteImage: {fileID: 7968904927735349844, guid: 6d7e846feba2bf140a5e89131b707b25, type: 3}
+  activeSpriteImage: {fileID: 3543176942506437092, guid: 6d7e846feba2bf140a5e89131b707b25, type: 3}
   key: 0
 --- !u!50 &20950658
 Rigidbody2D:
@@ -475,8 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af4137fe8176234d993cf808c98b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveSpriteImage: {fileID: 0}
-  activeSpriteImage: {fileID: 0}
+  inactiveSpriteImage: {fileID: -4773196292517953385, guid: b95b00afe725ed24daf8b57d6ed0978c, type: 3}
+  activeSpriteImage: {fileID: -7086250116481729433, guid: b95b00afe725ed24daf8b57d6ed0978c, type: 3}
   key: 0
 --- !u!50 &614452814
 Rigidbody2D:
@@ -783,8 +783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af4137fe8176234d993cf808c98b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveSpriteImage: {fileID: 0}
-  activeSpriteImage: {fileID: 0}
+  inactiveSpriteImage: {fileID: -8626638615746798254, guid: 0647ccd27280813488c894333564e565, type: 3}
+  activeSpriteImage: {fileID: -2330341406756690291, guid: 0647ccd27280813488c894333564e565, type: 3}
   key: 0
 --- !u!50 &847425497
 Rigidbody2D:
@@ -930,8 +930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af4137fe8176234d993cf808c98b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveSpriteImage: {fileID: 0}
-  activeSpriteImage: {fileID: 0}
+  inactiveSpriteImage: {fileID: 69246238096857660, guid: 7156738863fdd294cafbc16cdfab3c59, type: 3}
+  activeSpriteImage: {fileID: 6645265508060915249, guid: 7156738863fdd294cafbc16cdfab3c59, type: 3}
   key: 0
 --- !u!50 &1138086454
 Rigidbody2D:
@@ -1077,8 +1077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af4137fe8176234d993cf808c98b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveSpriteImage: {fileID: 0}
-  activeSpriteImage: {fileID: 0}
+  inactiveSpriteImage: {fileID: 6134751039864755284, guid: abe363b48a6030840b138fcdc3a1db4b, type: 3}
+  activeSpriteImage: {fileID: -6296917576086021652, guid: abe363b48a6030840b138fcdc3a1db4b, type: 3}
   key: 0
 --- !u!50 &1650009052
 Rigidbody2D:
@@ -1224,9 +1224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af4137fe8176234d993cf808c98b4e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inactiveSpriteImage: {fileID: 0}
-  activeSpriteImage: {fileID: 0}
-  key: 0
+  inactiveSpriteImage: {fileID: 8755141350599519265, guid: 277e58fec39267744b75c377d710448d, type: 3}
+  activeSpriteImage: {fileID: 5708612272539419304, guid: 277e58fec39267744b75c377d710448d, type: 3}
+  key: 113
 --- !u!50 &1680973388
 Rigidbody2D:
   serializedVersion: 4

@@ -6,6 +6,7 @@ public class ButtonControls : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     
+    // sprites for active and inactive states
     public Sprite inactiveSpriteImage;
     public Sprite activeSpriteImage;
 
