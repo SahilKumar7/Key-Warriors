@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonConstrols : MonoBehaviour
+public class ButtonControls : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     
