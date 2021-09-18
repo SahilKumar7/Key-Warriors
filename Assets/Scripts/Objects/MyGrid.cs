@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class MyGrid : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public PianoTile pianoTile; // current number of this grid
+
+    // check if have number
+    public bool IsHavePianoTile(){
+        return pianoTile != null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+    public PianoTile GetPianoTile(){
+        return pianoTile;
     }
+
+
+    public void SetPianoTile(PianoTile pianoTile){
+        this.pianoTile = pianoTile;
+
+    }
+    
 }

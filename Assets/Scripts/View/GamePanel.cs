@@ -68,14 +68,45 @@ public class GamePanel : MonoBehaviour
         return gameObject.GetComponent<MyGrid>();
     }
 
+    public void InitCanCreateTileGrid(){
+        for (int j = 0; j < col; j++){
+            canCreatePianoTileGrid.Add(grids[0][j]);
+        }
+    }
     public void CreatePianoTile(){
-        // canCreateNumberGrid.Clear();
 
+        int index = Random.Range(0, col);
+        GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
+        gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index]);
     }
 
     private void Awake() {
         // initate grid
         InitGrid();
+        InitCanCreateTileGrid();
+        CreatePianoTile();
+    }
 
+    public void MoveDown(){
+        Debug.Log("move down");
+        for(int i = row-1; i >=0; i --){
+            for(int j = col-1; j >= 0; j--){
+                if (grids[i][j].IsHavePianoTile()){
+                    // check if PianoTile is at the bottom
+                    PianoTile pianoTile = grids[i][j].GetPianoTile();
+                    if (i == row-1){
+                        // destory tile
+                        pianoTile.SetGrid(null);
+                        GameObject.Destroy(pianoTile.gameObject);
+                        // you lose
+                    }
+                    else{
+                        pianoTile.MoveToGrid(grids[i+1][j]);
+                        Debug.Log("movedown pianoTile");
+                    }
+                }
+            }
+        }
+        CreatePianoTile();
     }
 }
