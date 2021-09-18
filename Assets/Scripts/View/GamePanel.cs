@@ -48,7 +48,7 @@ public class GamePanel : MonoBehaviour
         gridLayoutGroup.cellSize = new Vector2(45,45);
 
         // this is the current setting
-        row = Const.RowNum;
+        row = Const.RowNum; 
         col = Const.ColumnNum;
         this.grids = new MyGrid[row][];
 
@@ -79,6 +79,36 @@ public class GamePanel : MonoBehaviour
         GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
         gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index]);
     }
+
+/*
+public void CreatePianoTile(){
+        int tilesPerRow = Random.Range(0, 3);                 //Randomize the amount of tiles per row
+    
+        if(tilesPerRow > 0){                                  //If tilesPerRow is more than 0 than we make a tile
+            List<Integer> tilesIndexes = new List<Interger>();//Create an array list to store positions with tiles
+            int index = Random.Range(0, col);                 //Since there is definetly a tile, than we get an index for it
+            tilesIndexes.add(index);                          //And we store it. 
+
+            int i = 1;                                        // init while loop
+            while(i < tilesPerRow){                           //if there is one tile per row, we already made it, no need to need to make more. 
+                int newIndex = Random.Range(0, col);          //we get a random index for a new tile
+                if(!tilesIndexes.Contains(newIndex)){         // check to make sure it doesnt overlap
+                    tilesIndexes.add(newIndex);               //add the new index
+                    i++;                                      //iterate next loop
+                }  
+            }
+        }
+        
+        for(int i = 0; i < tilesIndexes.Count; i++){          //Now we print the tiles at the indexes.
+            PlacePianoTile(tilesIndexes.ElementAt(i));
+        }
+    } 
+
+public void PlacePianoTile(int index){
+    GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
+    gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index]);
+}
+*/
 
     private void Awake() {
         // initate grid
