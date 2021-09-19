@@ -13,7 +13,7 @@ public class GamePanel : MonoBehaviour
     public Button btn_exit;
 
     public Transform girdParent; // parent of grid
-
+    public LoseMenuBtn loseMenuBtn;
     private int row; // number of rows
 
     private int col; // number of columns
