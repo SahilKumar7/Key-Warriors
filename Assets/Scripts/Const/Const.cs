@@ -19,4 +19,9 @@ public class Const
     public const int RowNum = 4;
 
     public const int ColumnNum = 6;
+
+    public static KeyCode[] KeyPressList = new KeyCode[6]{
+        KeyCode.A, KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.E, KeyCode.Q
+    };
+
 }

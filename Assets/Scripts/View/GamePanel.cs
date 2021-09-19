@@ -27,6 +27,8 @@ public class GamePanel : MonoBehaviour
     public MyGrid[][] grids = null; // save all the generated grids
 
     public int tilesPlayed;
+
+    private bool gameFinished;
     
 
     // restart
@@ -164,6 +166,8 @@ public void PlacePianoTile(int index){
                         // destory tile
                         pianoTile.SetGrid(null);
                         GameObject.Destroy(pianoTile.gameObject);
+                        Debug.Log("You Lose!");
+                        this.gameFinished = true;
                         // you lose
                     }
                     else{
@@ -175,17 +179,33 @@ public void PlacePianoTile(int index){
         CreatePianoTile();
     }
 
+    public void OnClickTile(int i){
+        if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
+            PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
+        
+            pianoTile.SetGrid(null);
+            GameObject.Destroy(pianoTile.gameObject);
+            Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
+        }
+    }
+
     void Update()
     {
-        if (timer > 1) // this is in seconds (1/speed)
+        if ( (!gameFinished) && (timer > 1)) // this is in seconds (1/speed)
         {
          //Do Stuff
             timer = 0;
             MoveDown();
         }
         timer += UnityEngine.Time.deltaTime;
-    }
 
+        for(int i = 0; i < Const.ColumnNum; i ++){
+            if (Input.GetKeyUp(Const.KeyPressList[i]))
+            {
+                OnClickTile(i);
+            }
+        }
+    }
 
 }
 
