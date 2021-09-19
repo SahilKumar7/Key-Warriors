@@ -158,20 +158,26 @@ public int RandomizerProbability(){
     }
     else if(tilesPlayed < (60 / multiplier)){
         Debug.Log("medium");
-        speed = 0.5f;
+        speed = 0.85f;
         return probabilityGenrtr(1);
     }
-    else{
+    else if(tilesPlayed < (100/ multiplier)){
         Debug.Log("hard");
-        speed = 0.25f;
+        speed = 0.75f;
         return probabilityGenrtr(2);
+    }
+    else{
+        Debug.Log("hell");
+        speed = 0.5f;
+        return probabilityGenrtr(3);
     }
 }
 
 public int probabilityGenrtr(int level){
     int[] easy = {0,0,0,1,1,1,1,1,1,1};
     int[] medium = {0,0,1,1,1,1,1,2,2,0};
-    int[] hard = {0,0,0,1,1,1,1,2,2,3};
+    int[] hard = {0,0,0,1,1,1,1,2,3,3};
+    int[] hell = {1,1,2,2,2,2,3,3,3,3};
     if(level == 0){
         int tilesPerRowIndex = Random.Range(0, 10);  
         return easy[tilesPerRowIndex];
@@ -180,9 +186,13 @@ public int probabilityGenrtr(int level){
         int tilesPerRowIndex = Random.Range(0, 10);  
         return medium[tilesPerRowIndex];
     }
-    else{
+    else if(level == 2){
         int tilesPerRowIndex = Random.Range(0, 10);  
         return hard[tilesPerRowIndex];
+    }
+    else{
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return hell[tilesPerRowIndex];
     }
 
       //Return the tiles per row.
@@ -261,7 +271,7 @@ public void PlacePianoTile(int index){
 
     void Update()
     {
-        if ( (!gameFinished) && (timer > 1)) // this is in seconds (1/speed)
+        if ( (!gameFinished) && (timer > speed)) // this is in seconds (1/speed)
         {
          //Do Stuff
             timer = 0;
