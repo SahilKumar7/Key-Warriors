@@ -178,7 +178,7 @@ public void PlacePianoTile(int index){
 
     void Update()
     {
-        if (timer > 0.25)
+        if (timer > 1) // this is in seconds (1/speed)
         {
          //Do Stuff
             timer = 0;

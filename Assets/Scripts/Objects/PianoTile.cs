@@ -73,9 +73,9 @@ public class PianoTile : MonoBehaviour
 
     private void Update() {
         if (isPlayingSpawnAnim){
-            // spawn animation
-            if (spawnScaleTime <= 1){
-                spawnScaleTime += Time.deltaTime * 4;
+            // spawn animation slowest 1s
+            if (spawnScaleTime <= 1){ // change this value if you want the slowest speed
+                spawnScaleTime += Time.deltaTime * 1; // 4(speed) is the speed value 1/4 seconds
                 transform.localScale = Vector3.Lerp(Vector3.zero,Vector3.one, spawnScaleTime);
             }
             else{
@@ -87,13 +87,13 @@ public class PianoTile : MonoBehaviour
         if (isPlayingClickedAnim){
             // merge animation, go big
             if (clickedScaleTime <= 1 && clickedScaleTimeBack == 0){
-                clickedScaleTime += Time.deltaTime * 4;
+                clickedScaleTime += Time.deltaTime * 1;
                 transform.localScale = Vector3.Lerp(Vector3.one,Vector3.one*1.2f, clickedScaleTime);
             }
 
             // merge animation, go back to normal
             if (clickedScaleTime >= 1 && clickedScaleTimeBack <= 1){
-                clickedScaleTimeBack += Time.deltaTime * 4;
+                clickedScaleTimeBack += Time.deltaTime * 1;
                 transform.localScale = Vector3.Lerp(Vector3.one*1.2f,Vector3.one, clickedScaleTimeBack);
             }
             
