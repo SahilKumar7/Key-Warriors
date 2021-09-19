@@ -41,6 +41,7 @@ public class GamePanel : MonoBehaviour
 
     public AudioSource gameMusic;
     public AudioSource gameOverMusic;
+    public AudioSource tileClearSound;
 
     // restart
     public void OnRestartClick(){
@@ -237,6 +238,7 @@ public void PlacePianoTile(int index){
     public void OnClickTile(int i){
         if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
             currentScore++;
+            tileClearSound.Play();
             PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
             this.grids[Const.RowNum-1][i].SetPianoTile(null);
             pianoTile.SetGrid(null);
