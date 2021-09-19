@@ -8,9 +8,8 @@ public class SelectLevelPanel : View
     public void OnSelectLevelClick(string level){
         // select a level
         PlayerPrefs.SetString(Const.GameLevel, level);
-        Debug.Log(PlayerPrefs.GetString(Const.GameLevel));
+        // Debug.Log(PlayerPrefs.GetString(Const.GameLevel));
         // go to the game scence
-        // SceneManager.LoadSceneAsync(1);
-
+        SceneManager.LoadSceneAsync(1);
     }
 }

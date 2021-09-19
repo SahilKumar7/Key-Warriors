@@ -23,6 +23,6 @@ public class MenuPanel : MonoBehaviour
 
     public void OnExitGameClick(){
         // exit game
-        Application.Quit();
+        // Application.Quit();
     }
 }

@@ -371,7 +371,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 168457162}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 763544090}
+        m_TargetAssemblyTypeName: GamePanel, Assembly-CSharp
+        m_MethodName: onMenuClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &168457162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,8 +830,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_score: {fileID: 740777188}
   text_best_score: {fileID: 0}
-  btn_restart: {fileID: 0}
-  btn_exit: {fileID: 0}
   girdParent: {fileID: 1369918527}
   loseMenuBtn: {fileID: 0}
   tilePrefab: {fileID: 4230444295290305520, guid: e0323782bf75a42589cf4b56662f46d2, type: 3}
@@ -1205,7 +1215,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1179160186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 763544090}
+        m_TargetAssemblyTypeName: GamePanel, Assembly-CSharp
+        m_MethodName: OnRestartClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1179160186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2449,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1851509780}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 763544090}
+        m_TargetAssemblyTypeName: GamePanel, Assembly-CSharp
+        m_MethodName: OnExitClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1851509780
 MonoBehaviour:
   m_ObjectHideFlags: 0
