@@ -7,6 +7,8 @@ public class PianoTile : MonoBehaviour
 { 
     private Image bg;
 
+    
+
     private MyGrid parentGrid;
 
     private float spawnScaleTime = 1;
@@ -20,15 +22,18 @@ public class PianoTile : MonoBehaviour
     private bool isMoving = false;
     private Vector3 startMovePos, endMovePos;
 
+    public Color[] bg_colors = new Color[Const.ColumnNum];
+
     private void Awake() {
         bg = transform.GetComponent<Image>();
     }
 
     // initialize
-    public void Init(MyGrid myGrid){
+    public void Init(MyGrid myGrid, PlayerKeyType pkt){
         myGrid.SetPianoTile(this);
         this.SetGrid(myGrid);
-
+        this.bg.color = this.bg_colors[(int)pkt];
+        
         PlaySpwanAnim();
     }
 

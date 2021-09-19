@@ -23,12 +23,11 @@ public class GamePanel : MonoBehaviour
     public float timer = 1;
 
     public List<MyGrid> canCreatePianoTileGrid = new List<MyGrid>();
-    
-
 
     public MyGrid[][] grids = null; // save all the generated grids
 
     public int tilesPlayed;
+    
 
     // restart
     public void OnRestartClick(){
@@ -141,7 +140,7 @@ public int probabilityGenrtr(int[] tiles){
 
 public void PlacePianoTile(int index){
     GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
-    gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index]);
+    gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index], (PlayerKeyType)index);
 }
 
     private void Awake() {
