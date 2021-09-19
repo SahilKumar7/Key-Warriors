@@ -21,5 +21,13 @@ public class MyGrid : MonoBehaviour
         this.pianoTile = pianoTile;
 
     }
+
+    public void SetMyGridColorWhile(){
+
+    }
+
+    public void SetMyGridColorTransparent(){
+        
+    }
     
 }
