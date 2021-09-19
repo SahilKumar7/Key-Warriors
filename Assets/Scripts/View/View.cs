@@ -6,7 +6,6 @@ public class View : MonoBehaviour
 {
     // display panel
     public virtual void Show(){
-        Debug.Log("hello");
         gameObject.SetActive(true);
     }
 

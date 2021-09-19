@@ -29,6 +29,8 @@ public class GamePanel : MonoBehaviour
     public int tilesPlayed;
     public float speed;
 
+    private bool gameFinished = false;
+
     // restart
     public void OnRestartClick(){
 
@@ -191,10 +193,9 @@ public void PlacePianoTile(int index){
                     // check if PianoTile is at the bottom
                     PianoTile pianoTile = this.grids[i][j].GetPianoTile();
                     if (i == row-1){
-                        // destory tile
-                        pianoTile.SetGrid(null);
-                        GameObject.Destroy(pianoTile.gameObject);
                         // you lose
+                        Debug.Log("You Lose!");
+                        this.gameFinished = true;
                     }
                     else{
                         pianoTile.MoveToGrid(grids[i+1][j]);
@@ -205,17 +206,33 @@ public void PlacePianoTile(int index){
         CreatePianoTile();
     }
 
+    public void OnClickTile(int i){
+        if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
+            PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
+        
+            pianoTile.SetGrid(null);
+            GameObject.Destroy(pianoTile.gameObject);
+            Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
+        }
+    }
+
     void Update()
     {
-        if (timer > speed) // this is in seconds (1/speed)
+        if ( (!gameFinished) && (timer > 1)) // this is in seconds (1/speed)
         {
          //Do Stuff
             timer = 0;
             MoveDown();
         }
         timer += UnityEngine.Time.deltaTime;
-    }
 
+        for(int i = 0; (i < Const.ColumnNum) && (!gameFinished); i ++){
+            if (Input.GetKeyUp(Const.KeyPressList[i]))
+            {
+                OnClickTile(i);
+            }
+        }
+    }
 
 }
 
