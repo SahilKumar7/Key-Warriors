@@ -45,6 +45,8 @@ public class GamePanel : MonoBehaviour
 
     // restart
     public void OnRestartClick(){
+        gameMusic.Stop();
+        gameMusic.Play();
         tilesPlayed = 0;
         gameFinished = false;
         currentScore = 0;
@@ -244,6 +246,7 @@ public void PlacePianoTile(int index){
             pianoTile.SetGrid(null);
             GameObject.Destroy(pianoTile.gameObject);
             Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
+
         }
     }
 
