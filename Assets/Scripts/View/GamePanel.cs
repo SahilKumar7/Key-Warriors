@@ -64,7 +64,7 @@ public class GamePanel : MonoBehaviour
     }
     // exit
     public void OnExitClick(){
-        // Appication.Quit();
+        Application.Quit();
     }
 
     public void onMenuClick(){
