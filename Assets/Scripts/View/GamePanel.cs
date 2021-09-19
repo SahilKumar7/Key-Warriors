@@ -9,6 +9,10 @@ public class GamePanel : MonoBehaviour
     public Text text_score; // current score
     public Text text_best_score; // best score
 
+    public int score = 0;
+
+    public int best_score = 0;
+
     public Transform girdParent; // parent of grid
     public LoseMenuBtn loseMenuBtn;
     private int row; // number of rows
@@ -175,14 +179,27 @@ public void PlacePianoTile(int index){
         InitGrid();
         InitCanCreateTileGrid();
         CreatePianoTile();
-        tilesPlayed = 0;
         speed = 1;
-        
-
+        tilesPlayed = 0;
+        text_best_score.text = PlayerPrefs.GetInt(Const.BestScore, 0).ToString();
     }
     public void automate(){
         
     }
+
+    public void setScore(){
+        score++;
+        text_score.text = score.ToString(); //
+    }
+
+    public void setBestScore(){
+        best_score = PlayerPrefs.GetInt(Const.BestScore, 0);
+        if(score > best_score){
+            PlayerPrefs.SetInt(Const.BestScore, best_score);
+            text_best_score.text = PlayerPrefs.GetInt(Const.BestScore, score).ToString();
+        }
+    }
+
     public void MoveDown(){
         tilesPlayed++;
         for(int i = row-1; i >=0; i --){
@@ -200,8 +217,10 @@ public void PlacePianoTile(int index){
                         if (i == row - 2){
                             this.grids[i+1][j].SetMyGridColor(Color.white);
                         }
-                        pianoTile.MoveToGrid(grids[i+1][j]);
+                        pianoTile.MoveToGrid(grids[i+1][j]); 
+                        //setScore();       
                     }
+
                 }
             }
         }
@@ -215,6 +234,8 @@ public void PlacePianoTile(int index){
             pianoTile.SetGrid(null);
             GameObject.Destroy(pianoTile.gameObject);
             Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
+            setScore();
+            setBestScore();
         }
     }
 
@@ -232,6 +253,7 @@ public void PlacePianoTile(int index){
             if (Input.GetKeyUp(Const.KeyPressList[i]))
             {
                 OnClickTile(i);
+
             }
         }
     }

@@ -15,6 +15,8 @@ public class Const
     };
 
     public int CurrentSpeed = 1;
+
+    public const string BestScore = "best_score";
     
     public const int RowNum = 4;
 

@@ -180,7 +180,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6134751039864755284, guid: abe363b48a6030840b138fcdc3a1db4b, type: 3}
+  m_Sprite: {fileID: 6134751039864755284, guid: abe363b48a6030840b138fcdc3a1db4b,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -556,7 +557,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8755141350599519265, guid: 277e58fec39267744b75c377d710448d, type: 3}
+  m_Sprite: {fileID: 8755141350599519265, guid: 277e58fec39267744b75c377d710448d,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -825,11 +827,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text_score: {fileID: 740777188}
-  text_best_score: {fileID: 0}
+  text_best_score: {fileID: 1683654249}
+  score: 0
+  best_score: 0
   girdParent: {fileID: 1369918527}
   loseMenuBtn: {fileID: 0}
-  tilePrefab: {fileID: 4230444295290305520, guid: e0323782bf75a42589cf4b56662f46d2, type: 3}
-  pianoTilePrefab: {fileID: 3047095915084168438, guid: 9affcd331b72d4850909ea31fb78a273, type: 3}
+  tilePrefab: {fileID: 4230444295290305520, guid: e0323782bf75a42589cf4b56662f46d2,
+    type: 3}
+  pianoTilePrefab: {fileID: 3047095915084168438, guid: 9affcd331b72d4850909ea31fb78a273,
+    type: 3}
   timer: 1
   canCreatePianoTileGrid: []
   tilesPlayed: 0
@@ -891,7 +897,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7968904927735349844, guid: 6d7e846feba2bf140a5e89131b707b25, type: 3}
+  m_Sprite: {fileID: 7968904927735349844, guid: 6d7e846feba2bf140a5e89131b707b25,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2996,7 +3003,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4773196292517953385, guid: b95b00afe725ed24daf8b57d6ed0978c, type: 3}
+  m_Sprite: {fileID: -4773196292517953385, guid: b95b00afe725ed24daf8b57d6ed0978c,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3071,7 +3079,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8626638615746798254, guid: 0647ccd27280813488c894333564e565, type: 3}
+  m_Sprite: {fileID: -8626638615746798254, guid: 0647ccd27280813488c894333564e565,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
