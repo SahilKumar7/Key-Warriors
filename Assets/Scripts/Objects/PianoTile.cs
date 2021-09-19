@@ -9,6 +9,17 @@ public class PianoTile : MonoBehaviour
 
     private MyGrid parentGrid;
 
+    private float spawnScaleTime = 1;
+    private bool isPlayingSpawnAnim = false;
+    private float clickedScaleTime = 1;
+    private float clickedScaleTimeBack = 1;
+    
+    private bool isPlayingClickedAnim = false;
+
+    private float movePosTime = 1;
+    private bool isMoving = false;
+    private Vector3 startMovePos, endMovePos;
+
     private void Awake() {
         bg = transform.GetComponent<Image>();
     }
@@ -17,6 +28,8 @@ public class PianoTile : MonoBehaviour
     public void Init(MyGrid myGrid){
         myGrid.SetPianoTile(this);
         this.SetGrid(myGrid);
+
+        PlaySpwanAnim();
     }
 
     public void SetGrid(MyGrid myGrid){
@@ -29,10 +42,76 @@ public class PianoTile : MonoBehaviour
 
     public void MoveToGrid(MyGrid myGrid){
         transform.SetParent(myGrid.transform);
-        transform.localPosition = Vector3.zero;
-
+        startMovePos = transform.position;
+        endMovePos = myGrid.transform.position;
+        isMoving = true;
+        movePosTime = 0;
+        
         GetGrid().SetPianoTile(null);
         myGrid.SetPianoTile(this);
         SetGrid(myGrid);
+    }
+
+    // play spawn 
+    public void PlaySpwanAnim(){
+        // triggers Update
+        spawnScaleTime = 0;
+        isPlayingSpawnAnim = true;
+
+    }
+
+    public void PlayMergeAnim(){
+        clickedScaleTime = 0;
+        clickedScaleTimeBack = 0;
+        isPlayingClickedAnim = true;
+    }
+
+    public void PlayMoveAnim(){
+        isMoving = true;
+        movePosTime = 0;
+    }
+
+    private void Update() {
+        if (isPlayingSpawnAnim){
+            // spawn animation
+            if (spawnScaleTime <= 1){
+                spawnScaleTime += Time.deltaTime * 4;
+                transform.localScale = Vector3.Lerp(Vector3.zero,Vector3.one, spawnScaleTime);
+            }
+            else{
+                isPlayingSpawnAnim = false;
+            }
+
+        }
+
+        if (isPlayingClickedAnim){
+            // merge animation, go big
+            if (clickedScaleTime <= 1 && clickedScaleTimeBack == 0){
+                clickedScaleTime += Time.deltaTime * 4;
+                transform.localScale = Vector3.Lerp(Vector3.one,Vector3.one*1.2f, clickedScaleTime);
+            }
+
+            // merge animation, go back to normal
+            if (clickedScaleTime >= 1 && clickedScaleTimeBack <= 1){
+                clickedScaleTimeBack += Time.deltaTime * 4;
+                transform.localScale = Vector3.Lerp(Vector3.one*1.2f,Vector3.one, clickedScaleTimeBack);
+            }
+            
+            if(clickedScaleTime >= 1 && clickedScaleTimeBack >= 1){
+                isPlayingClickedAnim = false;
+            }
+
+        }
+
+        if (isMoving){
+            if (movePosTime <= 1){
+                movePosTime += Time.deltaTime*4;
+                transform.position = Vector3.Lerp(startMovePos,endMovePos, movePosTime);
+            }
+            else{
+                isMoving = false;
+            }
+        }
+        
     }
 }
