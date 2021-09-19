@@ -32,11 +32,15 @@ public class GamePanel : MonoBehaviour
 
     private bool gameFinished = false;
 
+    public AudioSource music;
+    public AudioSource loseMusic;
+
     // restart
     public void OnRestartClick(){
         tilesPlayed = 0;
         gameFinished = false;
         ClearAllPianoTiles();
+
         // reset score
         // close the win panel or the lose panel
     }
@@ -212,6 +216,8 @@ public void PlacePianoTile(int index){
                         // you lose
                         Debug.Log("You Lose!");
                         this.gameFinished = true;
+                        music.Stop();
+                        loseMusic.Play();
                     }
                     else{
                         if (i == row - 2){
