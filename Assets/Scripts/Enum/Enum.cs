@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum PlayerKeyType
 {
-    A = 0,
+    Q = 0,
+    A,
     W,
-    D,
     S,
     E,
-    Q
+    D
 }

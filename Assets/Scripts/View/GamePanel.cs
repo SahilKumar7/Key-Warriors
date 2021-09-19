@@ -191,6 +191,7 @@ public void PlacePianoTile(int index){
             for(int j = col-1; j >= 0; j--){
                 if (this.grids[i][j].IsHavePianoTile()){
                     // check if PianoTile is at the bottom
+                    this.grids[i][j].SetMyGridColor(new Color(0,0,0,0));
                     PianoTile pianoTile = this.grids[i][j].GetPianoTile();
                     if (i == row-1){
                         // you lose
@@ -198,6 +199,9 @@ public void PlacePianoTile(int index){
                         this.gameFinished = true;
                     }
                     else{
+                        if (i == row - 2){
+                            this.grids[i+1][j].SetMyGridColor(Color.white);
+                        }
                         pianoTile.MoveToGrid(grids[i+1][j]);
                     }
                 }

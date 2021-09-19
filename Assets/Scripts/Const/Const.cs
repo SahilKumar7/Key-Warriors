@@ -8,7 +8,7 @@ public class Const
     public const string Sound = "sound";
     public const string Music = "music";
 
-    public Dictionary<string,int> GameLevelStartSpeedDict = new Dictionary<string,int>(){
+    public static Dictionary<string,int> GameLevelStartSpeedDict = new Dictionary<string,int>(){
         {"easy", 1},
         {"medium", 2},
         {"hard", 3}
@@ -21,7 +21,7 @@ public class Const
     public const int ColumnNum = 6;
 
     public static KeyCode[] KeyPressList = new KeyCode[6]{
-        KeyCode.A, KeyCode.W, KeyCode.D, KeyCode.S, KeyCode.E, KeyCode.Q
+        KeyCode.Q, KeyCode.A, KeyCode.W, KeyCode.S, KeyCode.E, KeyCode.D
     };
 
 }

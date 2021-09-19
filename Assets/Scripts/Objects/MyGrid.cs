@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MyGrid : MonoBehaviour
 {
@@ -22,12 +23,10 @@ public class MyGrid : MonoBehaviour
 
     }
 
-    public void SetMyGridColorWhile(){
-
-    }
-
-    public void SetMyGridColorTransparent(){
-        
+    public void SetMyGridColor(Color color){
+        //Fetch the Image component of the GameObject
+        Image bg = GetComponent<Image>();
+        bg.color = color;
     }
     
 }

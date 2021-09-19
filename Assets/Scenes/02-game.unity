@@ -180,8 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6134751039864755284, guid: abe363b48a6030840b138fcdc3a1db4b,
-    type: 3}
+  m_Sprite: {fileID: 6134751039864755284, guid: abe363b48a6030840b138fcdc3a1db4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -217,7 +216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &49835654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -228,7 +227,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.818607, y: 4.3175964, z: 3.0191016}
-  m_Children: [{fileID: 1995586050}, {fileID: 1269675915}, {fileID: 1219503832}]
+  m_Children:
+  - {fileID: 1995586050}
+  - {fileID: 1269675915}
+  - {fileID: 1219503832}
   m_Father: {fileID: 1298538286}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -542,8 +544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8755141350599519265, guid: 277e58fec39267744b75c377d710448d,
-    type: 3}
+  m_Sprite: {fileID: 8755141350599519265, guid: 277e58fec39267744b75c377d710448d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -820,10 +821,9 @@ MonoBehaviour:
   btn_restart: {fileID: 0}
   btn_exit: {fileID: 0}
   girdParent: {fileID: 1369918527}
-  tilePrefab: {fileID: 4230444295290305520, guid: e0323782bf75a42589cf4b56662f46d2,
-    type: 3}
-  pianoTilePrefab: {fileID: 3047095915084168438, guid: 9affcd331b72d4850909ea31fb78a273,
-    type: 3}
+  loseMenuBtn: {fileID: 0}
+  tilePrefab: {fileID: 4230444295290305520, guid: e0323782bf75a42589cf4b56662f46d2, type: 3}
+  pianoTilePrefab: {fileID: 3047095915084168438, guid: 9affcd331b72d4850909ea31fb78a273, type: 3}
   timer: 1
   canCreatePianoTileGrid: []
   tilesPlayed: 0
@@ -885,8 +885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7968904927735349844, guid: 6d7e846feba2bf140a5e89131b707b25,
-    type: 3}
+  m_Sprite: {fileID: 7968904927735349844, guid: 6d7e846feba2bf140a5e89131b707b25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2139,7 +2138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2901961}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2184,7 +2183,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 45, y: 45}
+  m_CellSize: {x: 44, y: 44}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 1
   m_ConstraintCount: 6
@@ -2840,8 +2839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4773196292517953385, guid: b95b00afe725ed24daf8b57d6ed0978c,
-    type: 3}
+  m_Sprite: {fileID: -4773196292517953385, guid: b95b00afe725ed24daf8b57d6ed0978c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2916,8 +2914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -8626638615746798254, guid: 0647ccd27280813488c894333564e565,
-    type: 3}
+  m_Sprite: {fileID: -8626638615746798254, guid: 0647ccd27280813488c894333564e565, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
