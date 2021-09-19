@@ -27,9 +27,7 @@ public class GamePanel : MonoBehaviour
     public MyGrid[][] grids = null; // save all the generated grids
 
     public int tilesPlayed;
-
-    private bool gameFinished;
-    
+    public float speed;
 
     // restart
     public void OnRestartClick(){
@@ -102,22 +100,49 @@ public void CreatePianoTile(){
     } 
 
 public int RandomizerProbability(){
-    //Probability Ratios {zeroTile, oneTile, twoTiles, threTiles}
-    int[] easy = {2,2,6,0};
+    /*Probability Ratios {zeroTile, oneTile, twoTiles, threeTiles}
+    int[] easy = {2,1,7,0};
     int[] medium = {1,5,3,1};
-    int[] hard = {0,3,1,6};
+    int[] hard = {0,3,1,6}; */
 
     if(tilesPlayed < 120){                  //After 120 tilesPlayed
-        return probabilityGenrtr(easy);     //Release the tiles per row. 
+        speed = 1;
+        Debug.Log("easy");
+        return probabilityGenrtr(0);     //Release the tiles per row. 
     }
     else if(tilesPlayed < 360){
-        return probabilityGenrtr(medium);
+        Debug.Log("medium");
+        speed = 0.5f;
+        return probabilityGenrtr(1);
     }
     else{
-        return probabilityGenrtr(hard);
+        Debug.Log("hard");
+        speed = 0.25f;
+        return probabilityGenrtr(2);
     }
 }
 
+public int probabilityGenrtr(int level){
+    int[] easy = {0,0,0,1,1,1,1,1,1,1};
+    int[] medium = {0,0,1,1,1,1,1,2,2,0};
+    int[] hard = {0,0,0,1,1,1,1,2,2,3};
+    if(level == 0){
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return easy[tilesPerRowIndex];
+    }
+    else if(level == 1){
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return medium[tilesPerRowIndex];
+    }
+    else{
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return hard[tilesPerRowIndex];
+    }
+
+      //Return the tiles per row.
+}
+
+/*
 public int probabilityGenrtr(int[] tiles){
     int arrLen = 0;
     for(int i = 0; i < tiles.Length; i++){ //Gather the length required for the probability array.
@@ -139,7 +164,7 @@ public int probabilityGenrtr(int[] tiles){
     int tilesPerRowIndex = Random.Range(0, 10);   //Gets a random index to choose in the probability array.
     return probabilityArr[tilesPerRowIndex];  //Return the tiles per row.
 }
-
+*/
 public void PlacePianoTile(int index){
     GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
     gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index], (PlayerKeyType)index);
@@ -151,10 +176,13 @@ public void PlacePianoTile(int index){
         InitCanCreateTileGrid();
         CreatePianoTile();
         tilesPlayed = 0;
+        speed = 1;
         
 
     }
-    
+    public void automate(){
+        
+    }
     public void MoveDown(){
         tilesPlayed++;
         for(int i = row-1; i >=0; i --){
@@ -166,8 +194,6 @@ public void PlacePianoTile(int index){
                         // destory tile
                         pianoTile.SetGrid(null);
                         GameObject.Destroy(pianoTile.gameObject);
-                        Debug.Log("You Lose!");
-                        this.gameFinished = true;
                         // you lose
                     }
                     else{
@@ -179,33 +205,17 @@ public void PlacePianoTile(int index){
         CreatePianoTile();
     }
 
-    public void OnClickTile(int i){
-        if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
-            PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
-        
-            pianoTile.SetGrid(null);
-            GameObject.Destroy(pianoTile.gameObject);
-            Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
-        }
-    }
-
     void Update()
     {
-        if ( (!gameFinished) && (timer > 1)) // this is in seconds (1/speed)
+        if (timer > speed) // this is in seconds (1/speed)
         {
          //Do Stuff
             timer = 0;
             MoveDown();
         }
         timer += UnityEngine.Time.deltaTime;
-
-        for(int i = 0; i < Const.ColumnNum; i ++){
-            if (Input.GetKeyUp(Const.KeyPressList[i]))
-            {
-                OnClickTile(i);
-            }
-        }
     }
+
 
 }
 
@@ -263,7 +273,7 @@ public class GamePanel : MonoBehaviour
         // this is the current setting
         row = Const.RowNum; 
         col = Const.ColumnNum;
-        this.grids = new MyGrid[row][];
+        this.grids = new MyGrid[row][]; .
 
         for (int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){

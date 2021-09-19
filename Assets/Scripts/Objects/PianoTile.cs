@@ -7,10 +7,10 @@ public class PianoTile : MonoBehaviour
 { 
     private Image bg;
 
-    
+    private GameObject myPanel;    
+    private GamePanel myGame;
 
     private MyGrid parentGrid;
-
     private float spawnScaleTime = 1;
     private bool isPlayingSpawnAnim = false;
     private float clickedScaleTime = 1;
@@ -27,6 +27,8 @@ public class PianoTile : MonoBehaviour
 
     private void Awake() {
         bg = transform.GetComponent<Image>();
+        myPanel = GameObject.Find("GamePanel");
+        myGame = myPanel.GetComponent<GamePanel>();
     }
     // initialize
     public void Init(MyGrid myGrid, PlayerKeyType pkt){
@@ -80,7 +82,7 @@ public class PianoTile : MonoBehaviour
         if (isPlayingSpawnAnim){
             // spawn animation slowest 1s
             if (spawnScaleTime <= 1){ // change this value if you want the slowest speed
-                spawnScaleTime += Time.deltaTime * 1; // 4(speed) is the speed value 1/4 seconds
+                spawnScaleTime += Time.deltaTime * (1/myGame.speed); // 4(speed) is the speed value 1/4 seconds
                 transform.localScale = Vector3.Lerp(Vector3.zero,Vector3.one, spawnScaleTime);
             }
             else{
