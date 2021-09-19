@@ -1216,8 +1216,6 @@ MonoBehaviour:
   gameMusic: {fileID: 1206524117}
   gameOverMusic: {fileID: 645781171}
   tileClearSound: {fileID: 975014186}
-  pressSource: {fileID: 0}
-  pressClip: {fileID: 0}
 --- !u!1 &874921137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2802,7 +2800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -157.8539, y: -48.576}
+  m_AnchoredPosition: {x: -157.85, y: -49.611}
   m_SizeDelta: {x: 306.28, y: 62.384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1548989857
@@ -2863,8 +2861,8 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 44, y: 44}
-  m_Spacing: {x: 5, y: 5}
+  m_CellSize: {x: 43, y: 43}
+  m_Spacing: {x: 7, y: 7}
   m_Constraint: 1
   m_ConstraintCount: 6
 --- !u!1 &1683654247
