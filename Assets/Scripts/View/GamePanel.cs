@@ -23,6 +23,8 @@ public class GamePanel : MonoBehaviour
 
     private int col; // number of columns
 
+
+
     public GameObject tilePrefab;
     public GameObject pianoTilePrefab;
     public float timer = 1;
@@ -43,6 +45,9 @@ public class GamePanel : MonoBehaviour
     public AudioSource gameOverMusic;
     public AudioSource tileClearSound;
 
+    public AudioSource pressSource;
+    public AudioClip pressClip;
+
     // restart
     public void OnRestartClick(){
         gameMusic.Stop();
@@ -52,6 +57,7 @@ public class GamePanel : MonoBehaviour
         currentScore = 0;
         ClearAllPianoTiles();
         bestScore = PlayerPrefs.GetInt(Const.BestScore,0);
+        gameMusic.Play();
     }
 
     public void ClearAllPianoTiles(){
@@ -237,8 +243,11 @@ public void PlacePianoTile(int index){
         CreatePianoTile();
     }
 
+    
+
     public void OnClickTile(int i){
         if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
+            pressSource.PlayOneShot(pressClip);
             currentScore++;
             tileClearSound.Play();
             PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
