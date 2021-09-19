@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GamePanel : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class GamePanel : MonoBehaviour
     private bool gameFinished = false;
 
     private int currentScore = 0;
-    private int bestScore = PlayerPrefs.GetInt(Const.BestScore,0);
+    private int bestScore = 0;
 
     // restart
     public void OnRestartClick(){
@@ -63,7 +64,7 @@ public class GamePanel : MonoBehaviour
 
     // exit
     public void OnExitClick(){
-        Appication.Quit();
+        Application.Quit();
     }
 
     public void onMenuClick(){
@@ -187,6 +188,7 @@ public void PlacePianoTile(int index){
         CreatePianoTile();
         speed = 1;
         tilesPlayed = 0;
+        bestScore = PlayerPrefs.GetInt(Const.BestScore,0);
         text_best_score.text = PlayerPrefs.GetInt(Const.BestScore, 0).ToString();
     }
     public void automate(){
