@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class VolumeChanger : MonoBehaviour
 {
+    private static float musicVolume = 1f;
+
     private AudioSource audioSource;
 
-    private float musicVolume = 1f;
 
     void Start()
     {

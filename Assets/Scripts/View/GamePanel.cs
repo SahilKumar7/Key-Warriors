@@ -47,6 +47,11 @@ public class GamePanel : MonoBehaviour
     public AudioSource pressSource;
     public AudioClip pressClip;
 
+    private void Start()
+    {
+        gameMusic.volume = PlayerPrefs.GetFloat(Const.Music);
+        tileClearSound.volume = PlayerPrefs.GetFloat(Const.Sound);
+    }
     // restart
     public void OnRestartClick(){
         gameMusic.Stop();
