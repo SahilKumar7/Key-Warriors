@@ -1202,8 +1202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text_score: {fileID: 740777188}
   text_best_score: {fileID: 1683654249}
-  losePanel: {fileID: 0}
-  winPanel: {fileID: 0}
+  losePanel: {fileID: 49835657}
+  winPanel: {fileID: 331620885}
   score: 0
   best_score: 0
   girdParent: {fileID: 1369918527}
@@ -1216,6 +1216,8 @@ MonoBehaviour:
   gameMusic: {fileID: 1206524117}
   gameOverMusic: {fileID: 645781171}
   tileClearSound: {fileID: 975014186}
+  pressSource: {fileID: 0}
+  pressClip: {fileID: 0}
 --- !u!1 &874921137
 GameObject:
   m_ObjectHideFlags: 0
