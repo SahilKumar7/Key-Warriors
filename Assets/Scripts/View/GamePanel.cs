@@ -30,6 +30,8 @@ public class GamePanel : MonoBehaviour
     public float speed;
     private bool gameFinished;
 
+    private int currentScore = 0;
+
     // restart
     public void OnRestartClick(){
 
@@ -207,6 +209,7 @@ public int probabilityGenrtr(int[] tiles){
 
     public void OnClickTile(int i){
         if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
+            currentScore ++;
             PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
         
             pianoTile.SetGrid(null);
@@ -231,6 +234,8 @@ public int probabilityGenrtr(int[] tiles){
                 OnClickTile(i);
             }
         }
+
+        text_score.text = currentScore.ToString();
     }
 
 
