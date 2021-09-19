@@ -107,12 +107,12 @@ public int RandomizerProbability(){
     int[] medium = {1,5,3,1};
     int[] hard = {0,3,1,6}; */
 
-    if(tilesPlayed < 120){                  //After 120 tilesPlayed
+    if(tilesPlayed < 30){                  //After 120 tilesPlayed
         speed = 1;
         Debug.Log("easy");
         return probabilityGenrtr(0);     //Release the tiles per row. 
     }
-    else if(tilesPlayed < 360){
+    else if(tilesPlayed < 60){
         Debug.Log("medium");
         speed = 0.5f;
         return probabilityGenrtr(1);
