@@ -20,7 +20,7 @@ public class GamePanel : MonoBehaviour
 
     public GameObject tilePrefab;
     public GameObject pianoTilePrefab;
-
+    public float timer = 1;
 
     public List<MyGrid> canCreatePianoTileGrid = new List<MyGrid>();
     
@@ -150,15 +150,17 @@ public void PlacePianoTile(int index){
         InitCanCreateTileGrid();
         CreatePianoTile();
         tilesPlayed = 0;
+        
+
     }
     
     public void MoveDown(){
         tilesPlayed++;
         for(int i = row-1; i >=0; i --){
             for(int j = col-1; j >= 0; j--){
-                if (grids[i][j].IsHavePianoTile()){
+                if (this.grids[i][j].IsHavePianoTile()){
                     // check if PianoTile is at the bottom
-                    PianoTile pianoTile = grids[i][j].GetPianoTile();
+                    PianoTile pianoTile = this.grids[i][j].GetPianoTile();
                     if (i == row-1){
                         // destory tile
                         pianoTile.SetGrid(null);
@@ -174,7 +176,18 @@ public void PlacePianoTile(int index){
         CreatePianoTile();
     }
 
-    
+    void Update()
+    {
+        if (timer > 0.25)
+        {
+         //Do Stuff
+            timer = 0;
+            MoveDown();
+        }
+        timer += UnityEngine.Time.deltaTime;
+    }
+
+
 }
 
 // Version 2
