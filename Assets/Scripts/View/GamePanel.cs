@@ -28,9 +28,6 @@ public class GamePanel : MonoBehaviour
 
     public int tilesPlayed;
     public float speed;
-    private bool gameFinished;
-
-    private int currentScore = 0;
 
     // restart
     public void OnRestartClick(){
@@ -78,7 +75,7 @@ public class GamePanel : MonoBehaviour
         }
     }
 
-    public void CreatePianoTile(){
+public void CreatePianoTile(){
                //Randomly choose one of the elements  
         int tilesPerRow = RandomizerProbability();      //The int at the element is tile per row.
 
@@ -102,48 +99,48 @@ public class GamePanel : MonoBehaviour
         }
     } 
 
-    public int RandomizerProbability(){
-        /*Probability Ratios {zeroTile, oneTile, twoTiles, threeTiles}
-        int[] easy = {2,1,7,0};
-        int[] medium = {1,5,3,1};
-        int[] hard = {0,3,1,6}; */
+public int RandomizerProbability(){
+    /*Probability Ratios {zeroTile, oneTile, twoTiles, threeTiles}
+    int[] easy = {2,1,7,0};
+    int[] medium = {1,5,3,1};
+    int[] hard = {0,3,1,6}; */
 
-        if(tilesPlayed < 120){                  //After 120 tilesPlayed
-            speed = 1;
-            Debug.Log("easy");
-            return probabilityGenrtr(0);     //Release the tiles per row. 
-        }
-        else if(tilesPlayed < 360){
-            Debug.Log("medium");
-            speed = 0.5f;
-            return probabilityGenrtr(1);
-        }
-        else{
-            Debug.Log("hard");
-            speed = 0.25f;
-            return probabilityGenrtr(2);
-        }
+    if(tilesPlayed < 120){                  //After 120 tilesPlayed
+        speed = 1;
+        Debug.Log("easy");
+        return probabilityGenrtr(0);     //Release the tiles per row. 
     }
+    else if(tilesPlayed < 360){
+        Debug.Log("medium");
+        speed = 0.5f;
+        return probabilityGenrtr(1);
+    }
+    else{
+        Debug.Log("hard");
+        speed = 0.25f;
+        return probabilityGenrtr(2);
+    }
+}
 
-    public int probabilityGenrtr(int level){
-        int[] easy = {0,0,0,1,1,1,1,1,1,1};
-        int[] medium = {0,0,1,1,1,1,1,2,2,0};
-        int[] hard = {0,0,0,1,1,1,1,2,2,3};
-        if(level == 0){
-            int tilesPerRowIndex = Random.Range(0, 10);  
-            return easy[tilesPerRowIndex];
-        }
-        else if(level == 1){
-            int tilesPerRowIndex = Random.Range(0, 10);  
-            return medium[tilesPerRowIndex];
-        }
-        else{
-            int tilesPerRowIndex = Random.Range(0, 10);  
-            return hard[tilesPerRowIndex];
-        }
+public int probabilityGenrtr(int level){
+    int[] easy = {0,0,0,1,1,1,1,1,1,1};
+    int[] medium = {0,0,1,1,1,1,1,2,2,0};
+    int[] hard = {0,0,0,1,1,1,1,2,2,3};
+    if(level == 0){
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return easy[tilesPerRowIndex];
+    }
+    else if(level == 1){
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return medium[tilesPerRowIndex];
+    }
+    else{
+        int tilesPerRowIndex = Random.Range(0, 10);  
+        return hard[tilesPerRowIndex];
+    }
 
       //Return the tiles per row.
-    }
+}
 
 /*
 public int probabilityGenrtr(int[] tiles){
@@ -168,10 +165,10 @@ public int probabilityGenrtr(int[] tiles){
     return probabilityArr[tilesPerRowIndex];  //Return the tiles per row.
 }
 */
-    public void PlacePianoTile(int index){
-        GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
-        gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index], (PlayerKeyType)index);
-    }
+public void PlacePianoTile(int index){
+    GameObject gameObject = GameObject.Instantiate(pianoTilePrefab,canCreatePianoTileGrid[index].transform);
+    gameObject.GetComponent<PianoTile>().Init(canCreatePianoTileGrid[index], (PlayerKeyType)index);
+}
 
     private void Awake() {
         // initate grid
@@ -194,9 +191,10 @@ public int probabilityGenrtr(int[] tiles){
                     // check if PianoTile is at the bottom
                     PianoTile pianoTile = this.grids[i][j].GetPianoTile();
                     if (i == row-1){
+                        // destory tile
+                        pianoTile.SetGrid(null);
+                        GameObject.Destroy(pianoTile.gameObject);
                         // you lose
-                        Debug.Log("You Lose!");
-                        this.gameFinished = true;
                     }
                     else{
                         pianoTile.MoveToGrid(grids[i+1][j]);
@@ -207,35 +205,15 @@ public int probabilityGenrtr(int[] tiles){
         CreatePianoTile();
     }
 
-    public void OnClickTile(int i){
-        if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
-            currentScore ++;
-            PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
-        
-            pianoTile.SetGrid(null);
-            GameObject.Destroy(pianoTile.gameObject);
-            Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
-        }
-    }
-
     void Update()
     {
-        if ( (!gameFinished) && (timer > 1)) // this is in seconds (1/speed)
+        if (timer > speed) // this is in seconds (1/speed)
         {
          //Do Stuff
             timer = 0;
             MoveDown();
         }
         timer += UnityEngine.Time.deltaTime;
-
-        for(int i = 0; i < Const.ColumnNum && (!gameFinished); i ++){
-            if (Input.GetKeyUp(Const.KeyPressList[i]))
-            {
-                OnClickTile(i);
-            }
-        }
-
-        text_score.text = currentScore.ToString();
     }
 
 
