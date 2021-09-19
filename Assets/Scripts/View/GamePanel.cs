@@ -9,12 +9,15 @@ public class GamePanel : MonoBehaviour
     public Text text_score; // current score
     public Text text_best_score; // best score
 
+    public LosePanel losePanel;
+
+    public WinPanel winPanel;
+
     public int score = 0;
 
     public int best_score = 0;
 
     public Transform girdParent; // parent of grid
-    public LoseMenuBtn loseMenuBtn;
     private int row; // number of rows
 
     private int col; // number of columns
@@ -32,17 +35,16 @@ public class GamePanel : MonoBehaviour
 
     private bool gameFinished = false;
 
-    public AudioSource music;
-    public AudioSource loseMusic;
+    private int currentScore = 0;
+    private int bestScore = PlayerPrefs.GetInt(Const.BestScore,0);
 
     // restart
     public void OnRestartClick(){
         tilesPlayed = 0;
         gameFinished = false;
+        currentScore = 0;
         ClearAllPianoTiles();
-
-        // reset score
-        // close the win panel or the lose panel
+        bestScore = PlayerPrefs.GetInt(Const.BestScore,0);
     }
 
     public void ClearAllPianoTiles(){
@@ -59,12 +61,9 @@ public class GamePanel : MonoBehaviour
         }
     }
 
-    public void DistoryEverything(){
-
-    }
     // exit
     public void OnExitClick(){
-        Application.Quit();
+        Appication.Quit();
     }
 
     public void onMenuClick(){
@@ -136,12 +135,15 @@ public int RandomizerProbability(){
     int[] medium = {1,5,3,1};
     int[] hard = {0,3,1,6}; */
 
-    if(tilesPlayed < 30){                  //After 120 tilesPlayed
+    string currentUserLevel = PlayerPrefs.GetString(Const.GameLevel, "easy");
+    int multiplier = Const.GameLevelStartSpeedDict[currentUserLevel];
+
+    if(tilesPlayed < (30 / multiplier)){                  //After 120 tilesPlayed
         speed = 1;
         Debug.Log("easy");
         return probabilityGenrtr(0);     //Release the tiles per row. 
     }
-    else if(tilesPlayed < 60){
+    else if(tilesPlayed < (60 / multiplier)){
         Debug.Log("medium");
         speed = 0.5f;
         return probabilityGenrtr(1);
@@ -191,18 +193,6 @@ public void PlacePianoTile(int index){
         
     }
 
-    public void setScore(){
-        score++;
-        text_score.text = score.ToString(); //
-    }
-
-    public void setBestScore(){
-        best_score = PlayerPrefs.GetInt(Const.BestScore, 0);
-        if(score > best_score){
-            PlayerPrefs.SetInt(Const.BestScore, best_score);
-            text_best_score.text = PlayerPrefs.GetInt(Const.BestScore, score).ToString();
-        }
-    }
 
     public void MoveDown(){
         tilesPlayed++;
@@ -216,15 +206,19 @@ public void PlacePianoTile(int index){
                         // you lose
                         Debug.Log("You Lose!");
                         this.gameFinished = true;
-                        music.Stop();
-                        loseMusic.Play();
+                        if (bestScore < currentScore){
+                            PlayerPrefs.SetInt(Const.BestScore,currentScore);
+                            winPanel.Show();
+                        }
+                        else{
+                            losePanel.Show();
+                        }
                     }
                     else{
                         if (i == row - 2){
                             this.grids[i+1][j].SetMyGridColor(Color.white);
                         }
-                        pianoTile.MoveToGrid(grids[i+1][j]); 
-                        //setScore();       
+                        pianoTile.MoveToGrid(grids[i+1][j]);      
                     }
 
                 }
@@ -235,13 +229,12 @@ public void PlacePianoTile(int index){
 
     public void OnClickTile(int i){
         if (this.grids[Const.RowNum-1][i].IsHavePianoTile()){
+            currentScore++;
             PianoTile pianoTile = this.grids[Const.RowNum-1][i].GetPianoTile();
             this.grids[Const.RowNum-1][i].SetPianoTile(null);
             pianoTile.SetGrid(null);
             GameObject.Destroy(pianoTile.gameObject);
             Debug.Log("destoryed Tiletype : " + (PlayerKeyType) i);
-            setScore();
-            setBestScore();
         }
     }
 
@@ -261,6 +254,15 @@ public void PlacePianoTile(int index){
                 OnClickTile(i);
 
             }
+        }
+
+        text_score.text = currentScore.ToString();
+        bestScore = PlayerPrefs.GetInt(Const.BestScore,0);
+        if (bestScore < currentScore){
+            text_best_score.text = currentScore.ToString();
+        }
+        else{
+            text_best_score.text = bestScore.ToString();
         }
     }
 
